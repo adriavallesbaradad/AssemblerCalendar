@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="./styles/calendar.css">
     <script src="main.js" defer></script>
     <title>Calendar</title>
 </head>
@@ -15,14 +15,31 @@
     <!-- EVENT SECTION -->
     <section class="eventSection">
         <div class="titleEventSection">
-            <div class="titleWeekdaySection" id="titleWeekdaySection">FRIDAY</div>
-            <div class="titleMonthEventSection" id="titleMonthEventSection">APRIL 29TH</div>
+            <div class="titleWeekdaySection">MONDAY</div>
+            <div class="titleMonthEventSection">FRIDAY 29TH</div>
         </div>
-        <div class="eventDateSection"></div>
+        <div class="eventDateSection">
+            <div>hola
+                <hr>
+            </div>
+            <div>hola
+                <hr>
+            </div>
+            <div>hola
+                <hr>
+            </div>
+        </div>
     </section>
 
     <!-- CALENDAR SECTION -->
     <section class="calendarSection">
+        <div class="titleDateEventSection">
+            <div class="btnBackMonth" role="button"></div>
+            <div class="titleMonth">
+                <p>APRIL</p>
+            </div>
+            <div class="btnNextMonth" role="button"></div>
+        </div>
         <div class="calendarHeader">
             <div class="titleYear">2022</div>
             <div class="buttonNewEvent"><button id="btnNewEvent" class="btnNewEvent">NEW EVENT</button></div>
