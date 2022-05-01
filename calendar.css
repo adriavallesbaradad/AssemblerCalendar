@@ -11,12 +11,30 @@
 body {
     height: 100vh;
     display: flex;
+    position: absolute;
 }
 
+/* <!-- EVENT SECTION --> */
+.eventSection {
+    background-color: #f28b77;
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    font-size: 3.5rem;
+    color: #fddcd5;
+    padding-left: 1rem;
+}
 
+.titleYear{
+    display: flex;
+    justify-content: right;
+    font-size: 3.5rem;
+    color: #f28b77;
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+}
 
-
-
+/* <!-- CALENDAR SECTION --> */
 .calendarSection {
     background-color: #fddcd5;
     display: flex;
@@ -29,25 +47,6 @@ body {
     display: flex;
     flex-direction: column;
     margin: 1rem 2rem;
-}
-
-.titleYear{
-    display: flex;
-    justify-content: right;
-    font-size: 3.5rem;
-    color: #f28b77;
-    margin-right: 1rem;
-    padding-bottom: 1rem;
-}
-
-.eventSection {
-    background-color: #f28b77;
-    display: flex;
-    flex-direction: row;
-    width: 30%;
-    font-size: 3.5rem;
-    color: #fddcd5;
-    padding-left: 1rem;
 }
 
 .buttonNewEvent{
@@ -68,25 +67,8 @@ body {
     border: none;
 }
 
-.days{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.2rem;
-}
-
-.days div{
-    font-size: 1.4rem;
-    margin: 0.3rem;
-    width:calc(56.2rem/7);
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /*WEEKDAYS*/
-
 .weekdays {
     width: 100%;
     height: 5rem;
@@ -108,3 +90,26 @@ body {
     align-items: center;
     word-spacing: 0.5rem;
 }
+
+/* CALENDAR DAYS */
+.days{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+}
+
+.days div{
+    font-size: 1.4rem;
+    margin: 0.3rem;
+    width:calc(56.2rem/7);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prev-date, .next-date{
+    opacity: 0.5;
+}
+
