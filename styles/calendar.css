@@ -107,6 +107,7 @@ padding: 1rem;
     color: #fddcd5;
     font-weight: 700;
     border: none;
+    cursor: pointer;
 }
 
 
@@ -118,6 +119,7 @@ padding: 1rem;
     width: 100%;
     padding: 1rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .btnBackMonth{
@@ -126,6 +128,7 @@ padding: 1rem;
     width: 100%;
     padding: 1rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 /* DAYS STYLES */
@@ -155,6 +158,9 @@ padding: 1rem;
     color: #f28b77;
     font-size: 1.4rem;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .today{
