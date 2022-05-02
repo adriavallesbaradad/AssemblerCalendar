@@ -1,53 +1,74 @@
 //CALENDAR VARIABLES
 const date = new Date();
-const weekday = date.getDay();
-const day = date.getDate();
-const month = date.getMonth();
+let weekday = date.getDay();
+let day = date.getDate();
+let month = date.getMonth();
 
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-let monthDays = document.querySelector(".days");
-let prevMonthDays = document.querySelector(".prev-date");
-let nextMonthDays = document.querySelector(".next-date");
+//CALENDAR SECTION HEADER
+document.querySelector(".btnBackMonth").addEventListener("click", renderPreviousMonth);
+document.querySelector(".btnNextMonth").addEventListener("click", rendernextMonth);
 
-//EVENT SECTION HEADER
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
 
-const lastDayoftheMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-const lastMonthDays = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-const upcomingMonthDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-
-const lastWeekday = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-console.log(weekdays[lastWeekday]);
-
-// CALENDAR NUMBERS
-let days = "";
-let prevDate = "";
-
-function getFirstWeekday() {
-    date.setDate(1);
-    return date.getDay();
-}
-
+//SHOW CALENDAR
 function renderCalendar() {
-    for (let i = 1; i <= lastDayoftheMonth; i++) {
-        days += `<div>${i}</div>`
+
+    weekday = date.getDay();
+    day = date.getDate();
+    date.getDate();
+    month = date.getMonth();
+
+    let monthDays = document.querySelector(".days");
+    let days = "";
+
+    //CALENDAR SECTION HEADER
+    document.querySelector(".titleYear").innerHTML = date.getFullYear();
+    document.querySelector(".titleMonth p").innerHTML = months[month];
+
+    // CALENDAR NUMBERS
+    const lastDayoftheMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    const lastMonthDays = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+    const lastWeekday = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+
+    function getFirstWeekday() {
+        date.setDate(1);
+        return date.getDay();
+    }
+
+    for (let p = getFirstWeekday(); p > 0; p--) {
+        days += `<div class="prev-date">${lastMonthDays - p}</div>`
         monthDays.innerHTML = days;
     }
 
-    for (let i = getFirstWeekday(); i > 0; i--) {
-        prevDate += `<div class="prev-date">${lastMonthDays - i}</div>`
-        prevMonthDays.innerHTML = prevDate;
+    for (let i = 1; i <= lastDayoftheMonth; i++) {
+        if (i == new Date().getDate() && date.getMonth() == new Date().getMonth()) {
+            days += `<div class="today">${i}</div>`;
+        } else {
+            days += `<div>${i}</div>`
+        }
+        monthDays.innerHTML = days;
     }
 
-    for (let i = 1; i > (6 - lastWeekday); i++) {
-        nextDate += `<div class="next-date">${i}</div>`
-        nextMonthDays.innerHTML = nextDate;
+    let nextDays = (6 - lastWeekday);
+    for (let n = 1; n <= nextDays; n++) {
+        days += `<div class="next-date">${n}</div>`
+        monthDays.innerHTML = days;
     }
 }
 
+function rendernextMonth() {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+}
+
+function renderPreviousMonth() {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
+}
 
 renderCalendar();
 

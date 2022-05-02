@@ -57,45 +57,55 @@
             <div class="days">
                 <div class="prev-date"></div>
                 <div></div>
-                <div class="next-date"></div>
+                <div class="next-date">12313</div>
             </div>
         </div>
 
     </section>
 
     <!-- MODAL SECTION -->
-    <div id="eventModal" class="eventModal" hidden>
+    <div id="eventModal" class="eventModal">
+
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <h1>NEW EVENT</h1>
-            <section class="modal__content__section">
-                <form class="modal__content__form">
-                    <label class="title" for="">Title:
-                        <input type="text">
-                    </label>
-                    <label class="initial_date"for="">Initial date:
-                        <input type="text">
-                    </label>
-                    <label for="">
-                        <input type="checkbox">End date
-                    </label>
-                    <label for="">End date:
-                        <input type="text">
-                    </label>
-                    <label for="">
-                        <input type="checkbox">Remind me when expired
-                    </label>
-                    <label>Time:
-                        <input type="text">
-                    </label>
-                    <label for="">Description:
-                        <textarea name="" id=""></textarea>
+            <form class="modal__content__form">
+                <fieldset>
+                    <label for="title">Title:
+                        <input id="title" class="Title" type="text">
                     </label><br>
+                    <label for="initialDate">Initial date:
+                        <input id="initialDate" class="initial_date" type="datetime-local">
+                    </label><br>
+                    <label for="endDateCheckBox">
+                        <input id="endDateCheckBox" type="checkbox" class="checkbox">End date
+                    </label><br>
+                    <label for="endDate">End date:
+                        <input id="endDate" class="end_date" type="datetime-local">
+                    </label><br>
+                    <label for="expiredCheckBox">
+                        <input id="expiredCheckBox" type="checkbox" class="checkbox"> Remind me when expired
+                    </label><br>
+                    <label for="expiredTime">Time:
+                        <input id="expiredTime" class="time"type="time">
+                    </label><br>
+                    <label for="textarea">Description:</label>
+                        <textarea id="textarea" class="textarea"></textarea><br>
                     <label>Event type:
-                        <input type="text">
+                        <select class="event_type">
+                            <option>Meeting</option>
+                            <option>Birthday</option>
+                            <option>Appointment</option>
+                            <option>Others</option>
+                        </select>
                     </label>
-                </form>
+                    <div class="btnEventStyle">
+                        <button class="btnEvent">CANCEL</button>
+                        <button class="btnEvent">CREATE</button>
+                    </div>
+                </fieldset>
+            </form>
             </section>
         </div>
     </div>
