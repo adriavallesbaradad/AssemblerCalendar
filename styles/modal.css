@@ -20,29 +20,31 @@
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    height: 30%;
+    width: 30%;
+    height: 100vh;
     /* Could be more or less, depending on screen size */
+    background-color: #f28b77;
+    color: #fddcd5;
+    display: flex;
+    flex-direction: column;
 }
 
-.modal-content p{
+.modal-content h1{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    font-size: 4rem;
 }
+
 
 /* The Close Button */
 .close {
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    text-align: right;
+    font-size: 3rem;
     font-weight: bold;
 }
+
 
 .close:hover,
 .close:focus {
@@ -54,11 +56,31 @@
 
 /* FLEX CENTER DIV EVENT MODAL */
 .eventModal{
-    position: absolute;
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
+
+/* SECTION FORM EVENT MODAL */
+.modal__content__section{
+    height: 100%;
+    display: flex;
+    font-size: 1.8rem;
+}
+
+.modal__content__form{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    padding-top: 1rem;
+}
+
+.initial_date {
+    width: 60%;
+}
