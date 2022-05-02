@@ -69,7 +69,44 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>It? Friday yeeeeey....</p>
+            <h1>NEW EVENT</h1>
+            <form class="modal__content__form">
+                <fieldset>
+                    <label for="title">Title:
+                        <input id="title" class="Title" type="text">
+                    </label><br>
+                    <label for="initialDate">Initial date:
+                        <input id="initialDate" class="initial_date" type="datetime-local">
+                    </label><br>
+                    <label for="endDateCheckBox">
+                        <input id="endDateCheckBox" type="checkbox" class="checkbox">End date
+                    </label><br>
+                    <label for="endDate">End date:
+                        <input id="endDate" class="end_date" type="datetime-local">
+                    </label><br>
+                    <label for="expiredCheckBox">
+                        <input id="expiredCheckBox" type="checkbox" class="checkbox"> Remind me when expired
+                    </label><br>
+                    <label for="expiredTime">Time:
+                        <input id="expiredTime" class="time"type="time">
+                    </label><br>
+                    <label for="textarea">Description:</label>
+                        <textarea id="textarea" class="textarea"></textarea><br>
+                    <label>Event type:
+                        <select class="event_type">
+                            <option>Meeting</option>
+                            <option>Birthday</option>
+                            <option>Appointment</option>
+                            <option>Others</option>
+                        </select>
+                    </label>
+                    <div class="btnEventStyle">
+                        <button class="btnEvent">CANCEL</button>
+                        <button class="btnEvent">CREATE</button>
+                    </div>
+                </fieldset>
+            </form>
+            </section>
         </div>
     </div>
 </body>

@@ -12,6 +12,7 @@ body {
     height: 100vh;
     display: flex;
     position: absolute;
+    width: 100%;
 }
 
 
@@ -132,14 +133,16 @@ padding: 1rem;
 /* DAYS STYLES */
 .days{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.2rem;
-    justify-content: center;
-    cursor: pointer;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px;
+    height: 65vh;
+    color: #f28b77;
+    text-align: center;
 }
 
-.days div{
+/* .days div{
     font-size: 1.4rem;
     margin: 0.3rem;
     width:calc(56.2rem/7);
@@ -148,6 +151,15 @@ padding: 1rem;
     justify-content: center;
     align-items: center;
     color: #f28b77;
+} */
+
+.day div{
+    color: #f28b77;
+    font-size: 1.4rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .today{
@@ -166,7 +178,7 @@ padding: 1rem;
     padding: 0 0.4rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: #f28b77;
 }
 
