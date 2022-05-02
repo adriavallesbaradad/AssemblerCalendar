@@ -16,6 +16,7 @@ body {
 
 
 /* <!-- CALENDAR SECTION --> */
+
 /* CALENDAR SECTION RIGHT */
 .calendarSection {
     background-color: #fddcd5;
@@ -31,7 +32,6 @@ body {
     margin: 1rem 2rem;
 }
 
-
 /* TITLE YEAR STYLE */
 .titleYear{
     display: flex;
@@ -43,7 +43,6 @@ body {
 }
 
 /* EVENT SECTION LEFT */
-
 .eventSection {
     background-color: #f28b77;
     display: flex;
@@ -89,7 +88,6 @@ padding: 1rem;
 }
 
 /* BUTTON NEW EVENT */
-
 .buttonNewEvent{
     display: flex;
     justify-content: right;
@@ -111,6 +109,7 @@ padding: 1rem;
 
 
 /*WEEKDAYS*/
+
 /* BUTTONS NEXT MONTH STYLE */
 .btnNextMonth {
     background-image: url("../assets/buttonNext.png");
@@ -161,7 +160,6 @@ padding: 1rem;
 }
 
 /*WEEKDAYS STYLE*/
-
 .weekdays {
     width: 100%;
     height: 5rem;

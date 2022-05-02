@@ -94,9 +94,6 @@ var span = document.getElementsByClassName("close")[0];
 function showModal() {
     modal.style.display = "block";
 }
-// btn.onclick = function () {
-//     modal.style.display = "block";
-// }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
@@ -108,4 +105,24 @@ window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
+}
+
+function getNewBtnInfo() {
+    showModal();
+    //get title
+    //get inital date
+    //get end date
+    //expire date
+    //description
+    //event type
+}
+
+function getCalendarBtnInfo() {
+    showModal();
+    //get title
+    //get inital date should be pre-filled
+    //get end date pre-filled ?
+    //expire date
+    //description
+    //event type
 }
