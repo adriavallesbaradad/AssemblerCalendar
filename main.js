@@ -11,6 +11,8 @@ let monthDays = document.querySelector(".days");
 let prevMonthDays = document.querySelector(".prev-date");
 let nextMonthDays = document.querySelector(".next-date");
 
+let days = "";
+
 //EVENT SECTION HEADER
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
@@ -20,12 +22,14 @@ const lastMonthDays = new Date(date.getFullYear(), date.getMonth(), 0).getDate()
 const upcomingMonthDays = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
 const lastWeekday = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-console.log(weekdays[lastWeekday]);
+
+//CALENDAR SECTION HEADER
+document.querySelector(".titleMonth p").innerHTML = months[month];
+// document.querySelector(".btnBackMonth").addEventListener("click", rendernextMonth());
+// document.querySelector(".btnNextMonth").addEventListener("click", renderCalendar());
+
 
 // CALENDAR NUMBERS
-let days = "";
-let prevDate = "";
-
 function getFirstWeekday() {
     date.setDate(1);
     return date.getDay();
@@ -33,18 +37,22 @@ function getFirstWeekday() {
 
 function renderCalendar() {
     for (let i = 1; i <= lastDayoftheMonth; i++) {
+        if(i == new Date().getDate() && date.getMonth() == new Date().getMonth()){
+            days += `<div class="today">${i}</div>`;
+        }
         days += `<div>${i}</div>`
         monthDays.innerHTML = days;
     }
 
-    for (let i = getFirstWeekday(); i > 0; i--) {
-        prevDate += `<div class="prev-date">${lastMonthDays - i}</div>`
-        prevMonthDays.innerHTML = prevDate;
+    for (let p = getFirstWeekday(); p > 0; p--) {
+        days += `<div class="prev-date">${lastMonthDays - i}</div>`
+        prevMonthDays.innerHTML = days;
     }
 
-    for (let i = 1; i > (6 - lastWeekday); i++) {
-        nextDate += `<div class="next-date">${i}</div>`
-        nextMonthDays.innerHTML = nextDate;
+    let nextDays = (6 - lastWeekday);
+    for (let n = 1; n <= nextDays; n++) {
+        days += `<div class="next-date">${n}</div>`
+        nextMonthDays.innerHTML = days;
     }
 }
 

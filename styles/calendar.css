@@ -147,6 +147,11 @@ padding: 1rem;
     color: #f28b77;
 }
 
+.today{
+    color: #fddcd5 !important;
+    background-color: #f28b77;
+}
+
 /*WEEKDAYS STYLE*/
 
 .weekdays {
