@@ -10,9 +10,13 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 //CALENDAR SECTION HEADER
 document.querySelector(".btnBackMonth").addEventListener("click", renderPreviousMonth);
 document.querySelector(".btnNextMonth").addEventListener("click", rendernextMonth);
+document.querySelector(".btnNewEvent").addEventListener("click", showModal);
 
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
+
+//CALENDAR SECTION NUMBERS
+document.querySelector(".days").addEventListener("click", showModal);
 
 //SHOW CALENDAR
 function renderCalendar() {
@@ -87,9 +91,12 @@ var btn = document.getElementById("btnNewEvent");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function () {
+function showModal() {
     modal.style.display = "block";
 }
+// btn.onclick = function () {
+//     modal.style.display = "block";
+// }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
