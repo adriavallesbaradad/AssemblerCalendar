@@ -152,6 +152,10 @@ padding: 1rem;
     background-color: #f28b77;
 }
 
+.prev-date, .next-date{
+    opacity: 0.5;
+}
+
 /*WEEKDAYS STYLE*/
 
 .weekdays {
@@ -176,25 +180,5 @@ padding: 1rem;
     word-spacing: 0.5rem;
 }
 
-/* CALENDAR DAYS */
-.days{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.2rem;
-}
 
-.days div{
-    font-size: 1.4rem;
-    margin: 0.3rem;
-    width:calc(56.2rem/7);
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.prev-date, .next-date{
-    opacity: 0.5;
-}
 
