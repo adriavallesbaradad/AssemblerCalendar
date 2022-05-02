@@ -77,8 +77,6 @@ function renderPreviousMonth() {
 renderCalendar();
 
 
-
-
 //MODAL SECTION
 
 // Get the modal
