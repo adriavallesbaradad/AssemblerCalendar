@@ -124,3 +124,14 @@ function getCalendarBtnInfo() {
     //description
     //event type
 }
+
+const btnCheckEndDate = document.querySelector("#endDateCheckBox");
+btnCheckEndDate.addEventListener("change", function(){
+    if (this.checked){
+        document.getElementById("titleEndDate").textContent = "End Date: ";
+        document.getElementById("endDate").style.display = "block";
+    } else {
+        document.getElementById("endDate").style.display = "none";
+        document.getElementById("titleEndDate").textContent = "";
+    }
+})

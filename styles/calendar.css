@@ -58,7 +58,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 6rem;
+    margin: 2rem;
 }
 
 .eventDateSection hr {
@@ -200,3 +200,6 @@ body {
     align-items: center;
     word-spacing: 0.5rem;
 }
+
+
+/* RESPONSIVE DESING */

@@ -23,3 +23,20 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
+// when button checked show "add time end date"
+
+const btnCheckEndDate = document.querySelector("#endDateCheckBox");
+console.log(btnCheckEndDate);
+
+// btnCheckEndDate.addEventListener("change", function(){
+//     if (this.check){
+//         document.getElementById("endDate").style.display = "block";
+//     } else {
+//         document.getElementById("endDate").style.display = "none";
+//     }
+// })
+// function btnShowEndDate(){
+//     document.getElementById("endDate").style.display = "block";
+// }
+// console.log(btnCheckEndDate);

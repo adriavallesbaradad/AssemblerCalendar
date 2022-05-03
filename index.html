@@ -19,15 +19,11 @@
             <div class="titleMonthEventSection"></div>
         </div>
         <div class="eventDateSection">
-            <div>hola
-                <hr>
-            </div>
-            <div>hola
-                <hr>
-            </div>
-            <div>hola
-                <hr>
-            </div>
+            <hr>
+            <br>
+            <hr>
+            <br>
+            <hr>
         </div>
     </section>
 
@@ -68,7 +64,9 @@
 
         <!-- Modal content -->
         <div class="modal-content">
+            <div class="close__container__style">
             <span class="close">&times;</span>
+            </div>
             <h1>NEW EVENT</h1>
             <form class="modal__content__form">
                 <fieldset>
@@ -81,14 +79,11 @@
                     <label for="endDateCheckBox">
                         <input id="endDateCheckBox" type="checkbox" class="checkbox">End date
                     </label><br>
-                    <label for="endDate">End date:
+                    <label for="endDate"><div id="titleEndDate"></div>
                         <input id="endDate" class="end_date" type="datetime-local">
                     </label><br>
                     <label for="expiredCheckBox">
                         <input id="expiredCheckBox" type="checkbox" class="checkbox"> Remind me when expired
-                    </label><br>
-                    <label for="expiredTime">Time:
-                        <input id="expiredTime" class="time"type="time">
                     </label><br>
                     <label for="textarea">Description:</label>
                         <textarea id="textarea" class="textarea"></textarea><br>
