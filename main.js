@@ -4,26 +4,43 @@ let weekday = date.getDay();
 let day = date.getDate();
 let month = date.getMonth();
 
+//MODAL WAS OPENED WHERE?
+let newEventbtn = true;
+
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+let eventObj = {
+    title: "",
+    initialDate: "",
+    endDate: "",
+    expireDate: "",
+    Description: "",
+    eventType: ""
+}
 
 //CALENDAR SECTION HEADER
 document.querySelector(".btnBackMonth").addEventListener("click", renderPreviousMonth);
 document.querySelector(".btnNextMonth").addEventListener("click", rendernextMonth);
-document.querySelector(".btnNewEvent").addEventListener("click", showModal);
+document.querySelector(".btnNewEvent").addEventListener("click", showModalbtn);
 
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
 
 //CALENDAR SECTION NUMBERS
-document.querySelector(".days").addEventListener("click", showModal);
+document.querySelector(".days").addEventListener("click", showModalday);
+document.querySelector(".btnCreate").addEventListener("click", createEvent);
+// document.querySelector(".eventOnDay").addEventListener("click", eventList);
+
+// function eventList(){
+//     document.getElementById("eventDateSection").innerHTML = `<div${HOLA}</div>`;
+// }
 
 //SHOW CALENDAR
 function renderCalendar() {
 
     weekday = date.getDay();
     day = date.getDate();
-    date.getDate();
     month = date.getMonth();
 
     let monthDays = document.querySelector(".days");
@@ -49,7 +66,7 @@ function renderCalendar() {
     }
 
     for (let i = 1; i <= lastDayoftheMonth; i++) {
-        if (i == new Date().getDate() && date.getMonth() == new Date().getMonth()) {
+        if (i == new Date().getDate() && month == new Date().getMonth()) {
             days += `<div class="today">${i}</div>`;
         } else {
             days += `<div>${i}</div>`
@@ -80,23 +97,39 @@ renderCalendar();
 //MODAL SECTION
 
 // Get the modal
-var modal = document.getElementById("eventModal");
+let modal = document.getElementById("eventModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("btnNewEvent");
+let btn = document.getElementById("btnNewEvent");
+
+// Get the button that creates the event
+let btnCreate = document.getElementById("btnCreate");
+
+// Get the button that cancels the event
+let btnCancel = document.getElementById("btnCancel");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-function showModal() {
+function showModalbtn() {
     modal.style.display = "block";
+    newEventbtn = true;
+}
+
+// When the user clicks on a day, open the modal
+function showModalday() {
+    modal.style.display = "block";
+    newEventbtn = false;
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
 }
+// btnCancel.onclick = function (){
+//     modal.style.display = "none";
+// }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -105,22 +138,36 @@ window.onclick = function (event) {
     }
 }
 
-function getNewBtnInfo() {
-    showModal();
-    //get title
-    //get inital date
-    //get end date
-    //expire date
-    //description
-    //event type
+function createEvent() {
+    if (newEventbtn) {
+        getEventInfo();
+    } else {
+        getEventInfo();
+    }
 }
 
+function getNewBtnInfo() {}
+
 function getCalendarBtnInfo() {
-    showModal();
-    //get title
     //get inital date should be pre-filled
     //get end date pre-filled ?
-    //expire date
-    //description
-    //event type
 }
+
+function getEventInfo() {
+    // let newEvent = new eventObj();
+    // const modalInputs = document.querySelectorAll("#modalContent input");
+    // modalInputs.forEach(element => {
+    //     console.log(element);
+    //     eventInfo += element.value;
+    // });
+
+
+    document.querySelector('#modalContent')
+        .addEventListener('submit', e => {
+            e.preventDefault()
+            const data = Object.fromEntries(new FormData(e.target))
+            console.log(data);
+        })
+}
+
+

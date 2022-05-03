@@ -18,7 +18,7 @@
             <div class="titleWeekdaySection"></div>
             <div class="titleMonthEventSection"></div>
         </div>
-        <div class="eventDateSection">
+        <div class="eventDateSection" id="eventDateSection">
             <div>hola
                 <hr>
             </div>
@@ -70,30 +70,30 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h1>NEW EVENT</h1>
-            <form class="modal__content__form">
+            <form class="modal__content__form" id="modalContent">
                 <fieldset>
                     <label for="title">Title:
-                        <input id="title" class="Title" type="text">
+                        <input id="title" class="Title" type="text" name="title">
                     </label><br>
                     <label for="initialDate">Initial date:
-                        <input id="initialDate" class="initial_date" type="datetime-local">
+                        <input id="initialDate" class="initial_date" type="datetime-local" name="initialDate">
                     </label><br>
                     <label for="endDateCheckBox">
-                        <input id="endDateCheckBox" type="checkbox" class="checkbox">End date
+                        <input id="endDateCheckBox" type="checkbox" class="checkbox" name="endDateCheckBox">End date
                     </label><br>
                     <label for="endDate">End date:
-                        <input id="endDate" class="end_date" type="datetime-local">
+                        <input id="endDate" class="end_date" type="datetime-local" name="endDate">
                     </label><br>
                     <label for="expiredCheckBox">
-                        <input id="expiredCheckBox" type="checkbox" class="checkbox"> Remind me when expired
+                        <input id="expiredCheckBox" type="checkbox" class="checkbox" name=""> Remind me when expired
                     </label><br>
                     <label for="expiredTime">Time:
-                        <input id="expiredTime" class="time"type="time">
+                        <input id="expiredTime" class="time" type="time">
                     </label><br>
                     <label for="textarea">Description:</label>
-                        <textarea id="textarea" class="textarea"></textarea><br>
+                    <textarea id="textarea" class="textarea"></textarea><br>
                     <label>Event type:
-                        <select class="event_type">
+                        <select class="event_type" id="eventType">
                             <option>Meeting</option>
                             <option>Birthday</option>
                             <option>Appointment</option>
@@ -101,8 +101,8 @@
                         </select>
                     </label>
                     <div class="btnEventStyle">
-                        <button class="btnEvent">CANCEL</button>
-                        <button class="btnEvent">CREATE</button>
+                        <button type="reset" class="btnCancel" id="btnCancel">CANCEL</button>
+                        <button type="submit" class="btnCreate" id="btnCreate">CREATE</button>
                     </div>
                 </fieldset>
             </form>

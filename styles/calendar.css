@@ -200,3 +200,11 @@ body {
     align-items: center;
     word-spacing: 0.5rem;
 }
+
+.weekdays div{
+justify-self: center;
+}
+
+.days div{
+    justify-self: center;
+}
