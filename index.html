@@ -22,11 +22,9 @@
             <div>hola
                 <hr>
             </div>
-            <div>hola
-                <hr>
+            <div>
             </div>
-            <div>hola
-                <hr>
+            <div>
             </div>
         </div>
     </section>
@@ -35,10 +33,11 @@
     <section class="calendarSection">
         <div class="titleDateEventSection">
             <div class="btnBackMonth" role="button"></div>
-            <div class="titleMonth">
+            <div class="btnNextMonth" role="button"></div>
+
+         <div class="titleMonth">
                 <p>APRIL</p>
             </div>
-            <div class="btnNextMonth" role="button"></div>
         </div>
         <div class="calendarHeader">
             <div class="titleYear">2022</div>
@@ -53,12 +52,14 @@
                 <div>THU</div>
                 <div>FRI</div>
                 <div>SAT</div>
-            </div>
-            <div class="days">
-                <div class="prev-date"></div>
-                <div></div>
-                <div class="next-date"></div>
-            </div>
+        </div>
+        <div class="days">
+            <div class="prev-date dayBtn"></div>
+            <div class="dayBtn"><button class="eventOnDay">+</button></div>
+            <div class="next-date dayBtn"></div>
+        </div>
+            <!-- CALENDAR DAYS -->
+
         </div>
 
     </section>
@@ -112,3 +113,5 @@
 </body>
 
 </html>
+
+

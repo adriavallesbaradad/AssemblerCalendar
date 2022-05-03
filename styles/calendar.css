@@ -129,6 +129,10 @@ body {
 }
 
 /* DAYS STYLES */
+
+
+
+
 .days {
     display: grid;
     width: 100%;
@@ -143,6 +147,20 @@ body {
     border-radius: 50%;
 }
 
+
+
+.today {
+    color: #fddcd5 !important;
+    background-color: #f28b77 !important;
+    border-radius: 50%;
+}
+
+.prev-date,
+.next-date {
+    opacity: 0.5;
+}
+
+/*WEEKDAYS STYLE*/
 .days div {
     font-size: 1.4rem;
     margin: 0.3rem;
@@ -163,27 +181,36 @@ body {
     color: #fddcd5 !important;
 }
 
-.today {
-    color: #fddcd5 !important;
-    background-color: #f28b77 !important;
+.days div:hover .eventOnDay {
+    display: block;
+}
+
+.eventOnDay {
+    display: none;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+    color: #fddcd5;
+    width: 2.5vh;
+    height: auto;
+    background-color: #f28b77;
+    border: none;
     border-radius: 50%;
 }
 
-.prev-date,
-.next-date {
-    opacity: 0.5;
+.eventOnDay:hover {
+    background-color: #fddcd5;
+    color: #f28b77 !important;
 }
 
-/*WEEKDAYS STYLE*/
 .weekdays {
+    display: grid;
     width: 100%;
     height: 5rem;
     padding: 0 0.4rem;
-    display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 0px;
-
     align-items: center;
     justify-content: center;
     color: #f28b77;
@@ -201,10 +228,7 @@ body {
     word-spacing: 0.5rem;
 }
 
-.weekdays div{
-justify-self: center;
-}
-
-.days div{
+.weekdays div {
     justify-self: center;
 }
+

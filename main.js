@@ -4,6 +4,7 @@ let weekday = date.getDay();
 let day = date.getDate();
 let month = date.getMonth();
 
+
 //MODAL WAS OPENED WHERE?
 let newEventbtn = true;
 
@@ -27,14 +28,12 @@ document.querySelector(".btnNewEvent").addEventListener("click", showModalbtn);
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
 
-//CALENDAR SECTION NUMBERS
-document.querySelector(".days").addEventListener("click", showModalday);
-document.querySelector(".btnCreate").addEventListener("click", createEvent);
-// document.querySelector(".eventOnDay").addEventListener("click", eventList);
+let newEvent = document.querySelector(".eventOnDay");
 
-// function eventList(){
-//     document.getElementById("eventDateSection").innerHTML = `<div${HOLA}</div>`;
-// }
+//CALENDAR SECTION NUMBERS
+// document.querySelector(".days").addEventListener("click", showModalday);
+// document.querySelector(".btnCreate").addEventListener("click", createEvent);
+// document.querySelector(".eventOnDay").addEventListener("click", eventList);
 
 //SHOW CALENDAR
 function renderCalendar() {
@@ -61,22 +60,22 @@ function renderCalendar() {
     }
 
     for (let p = getFirstWeekday(); p > 0; p--) {
-        days += `<div class="prev-date">${lastMonthDays - p}</div>`
+        days += `<div class="prev-date divBtn">${lastMonthDays - p}</div>`
         monthDays.innerHTML = days;
     }
 
     for (let i = 1; i <= lastDayoftheMonth; i++) {
         if (i == new Date().getDate() && month == new Date().getMonth()) {
-            days += `<div class="today">${i}</div>`;
+            days += `<div class="today divBtn">${i}<button class="eventOnDay">+</button></div>`;
         } else {
-            days += `<div>${i}</div>`
+            days += `<div class="divBtn">${i}<button class="eventOnDay">+</button></div>`
         }
         monthDays.innerHTML = days;
     }
 
     let nextDays = (6 - lastWeekday);
     for (let n = 1; n <= nextDays; n++) {
-        days += `<div class="next-date">${n}</div>`
+        days += `<div class="next-date divBtn">${n}<button class="eventOnDay">+</button></div>`
         monthDays.innerHTML = days;
     }
 }
@@ -103,7 +102,7 @@ let modal = document.getElementById("eventModal");
 let btn = document.getElementById("btnNewEvent");
 
 // Get the button that creates the event
-let btnCreate = document.getElementById("btnCreate");
+// let btnCreate = document.getElementById("btnCreate");
 
 // Get the button that cancels the event
 let btnCancel = document.getElementById("btnCancel");
@@ -123,6 +122,17 @@ function showModalday() {
     newEventbtn = false;
 }
 
+// When the user clicks on the button, open the modal
+function showModalDay(e) {
+    console.log(this);
+    console.log(e.target);
+    console.log(this.button);
+    if (e.target == newEvent) {
+        eventList();
+    } else {
+        modal.style.display = "block";
+    }
+}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
@@ -154,14 +164,6 @@ function getCalendarBtnInfo() {
 }
 
 function getEventInfo() {
-    // let newEvent = new eventObj();
-    // const modalInputs = document.querySelectorAll("#modalContent input");
-    // modalInputs.forEach(element => {
-    //     console.log(element);
-    //     eventInfo += element.value;
-    // });
-
-
     document.querySelector('#modalContent')
         .addEventListener('submit', e => {
             e.preventDefault()
@@ -170,4 +172,22 @@ function getEventInfo() {
         })
 }
 
+const divBtn = document.querySelectorAll(".divBtn");
+const  btnCreate = document.querySelectorAll(".eventOnDay");
 
+for (const elementDivBtn of divBtn) {
+    elementDivBtn.addEventListener("click" ,showInfo);
+}
+
+for (const elementBtnCreate of btnCreate) {
+    elementBtnCreate.addEventListener("click" , showCreateModal);
+}
+
+function showInfo(e) {
+    console.log("info");
+}
+
+function showCreateModal(e) {
+    e.stopPropagation();
+    showModalday();
+}

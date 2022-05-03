@@ -60,7 +60,7 @@
 
 /* FLEX CENTER DIV EVENT MODAL */
 .eventModal{
-    display: flex;
+    display: none;
     position: absolute;
     justify-content: center;
     align-items: center;
