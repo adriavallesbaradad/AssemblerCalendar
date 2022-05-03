@@ -15,8 +15,24 @@ document.querySelector(".btnNewEvent").addEventListener("click", showModal);
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
 
+let newEvent = document.querySelector(".eventOnDay");
+
+function eventList() {
+    console.log("sfdgsgdf");
+    document.getElementById("eventDataSection").innerHTML = "hola perro";
+    document.querySelector(".eventDataSection").innerHTML = "hola perro";
+}
+
+
+
+
+// document.querySelector(".eventOnDay").addEventListener("click", eventList);
+// function eventList(){​​​​​​​
+// document.getElementById("eventDateSection").innerHTML = "holaa";
+// }
+
 //CALENDAR SECTION NUMBERS
-document.querySelector(".days").addEventListener("click", showModal);
+document.querySelector(".days").addEventListener("click", showModalDay);
 
 //SHOW CALENDAR
 function renderCalendar() {
@@ -50,16 +66,16 @@ function renderCalendar() {
 
     for (let i = 1; i <= lastDayoftheMonth; i++) {
         if (i == new Date().getDate() && date.getMonth() == new Date().getMonth()) {
-            days += `<div class="today">${i}</div>`;
+            days += `<div class="today">${i}<button class="eventOnDay">+</button></div>`;
         } else {
-            days += `<div>${i}</div>`
+            days += `<div class="divBtn">${i}<button class="eventOnDay">+</button></div>`
         }
         monthDays.innerHTML = days;
     }
 
     let nextDays = (6 - lastWeekday);
     for (let n = 1; n <= nextDays; n++) {
-        days += `<div class="next-date">${n}</div>`
+        days += `<div class="next-date">${n}<button class="eventOnDay">+</button></div>`
         monthDays.innerHTML = days;
     }
 }
@@ -93,6 +109,17 @@ function showModal() {
     modal.style.display = "block";
 }
 
+// When the user clicks on the button, open the modal
+function showModalDay(e) {
+    console.log(this);
+    console.log(e.target);
+    console.log(this.button);
+    if (e.target == newEvent) {
+        eventList();
+    } else {
+        modal.style.display = "block";
+    }
+}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
@@ -135,3 +162,23 @@ btnCheckEndDate.addEventListener("change", function(){
         document.getElementById("titleEndDate").textContent = "";
     }
 })
+const divBtn = document.querySelectorAll(".divBtn");
+const  btnCreate = document.querySelectorAll(".eventOnDay");
+
+for (const elementDivBtn of divBtn) {
+    elementDivBtn.addEventListener("click" , showInfo);
+}
+
+for (const elementBtnCreate of btnCreate) {
+    elementBtnCreate.addEventListener("click" , showModalBtn);
+}
+
+function showInfo(e) {
+    console.log("info");
+}
+function showModalBtn(e) {
+
+    e.stopPropagation();
+   console.log("MODAL");
+    
+}
