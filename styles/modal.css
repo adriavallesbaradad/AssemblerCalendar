@@ -37,11 +37,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 
 /* The Close Button */
+.close__container__style{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+    justify-content: flex-end;
+}
+
+
 .close {
     color: #aaa;
     text-align: right;
@@ -95,7 +104,9 @@ input, label, textarea{
 /* BACKGROUND COLOR OF INPUT */
 
 input{
-    background-color: #fddcd5;;
+    background-color: #fddcd5;
+    text-align: center;
+    width: 100%;
 }
 textarea{
     background-color: #fddcd5;
@@ -104,9 +115,10 @@ textarea{
 select{
     background-color: #fddcd5;
     border: none;
+    text-align: center;
 }
 input:focus{
-    background-color: #fddcd5;;
+    background-color: #fddcd5;
 }
 
 
@@ -128,7 +140,6 @@ input:focus{
     width: 75%;
 }
 
-input[type="datetime-local"]
 
 .event_type{
     width: 69%;
@@ -154,9 +165,6 @@ input[type="datetime-local"]
     cursor: pointer;
 }
 
-
 #endDate{
-
     display:none;
-
 }

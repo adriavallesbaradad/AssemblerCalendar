@@ -130,9 +130,6 @@ body {
 
 /* DAYS STYLES */
 
-
-
-
 .days {
     display: grid;
     width: 100%;
@@ -176,15 +173,6 @@ body {
     text-align: center;
 }
 
-.days div:hover {
-    background-color: #fbb0a1;
-    color: #fddcd5 !important;
-}
-
-.days div:hover .eventOnDay {
-    display: block;
-}
-
 .eventOnDay {
     display: none;
     left: 0px;
@@ -196,6 +184,15 @@ body {
     background-color: #f28b77;
     border: none;
     border-radius: 50%;
+}
+
+.days div:hover {
+    background-color: #fbb0a1;
+    color: #fddcd5 !important;
+}
+
+.days div:hover .eventOnDay {
+    display: block;
 }
 
 .eventOnDay:hover {
@@ -231,4 +228,3 @@ body {
 .weekdays div {
     justify-self: center;
 }
-

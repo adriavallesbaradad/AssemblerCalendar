@@ -69,7 +69,9 @@
 
         <!-- Modal content -->
         <div class="modal-content">
+            <div class="close__container__style">
             <span class="close">&times;</span>
+            </div>
             <h1>NEW EVENT</h1>
             <form class="modal__content__form" id="modalContent">
                 <fieldset>
@@ -82,14 +84,11 @@
                     <label for="endDateCheckBox">
                         <input id="endDateCheckBox" type="checkbox" class="checkbox" name="endDateCheckBox">End date
                     </label><br>
-                    <label for="endDate">End date:
+                    <label for="endDate"><div id="titleEndDate"></div>
                         <input id="endDate" class="end_date" type="datetime-local" name="endDate">
                     </label><br>
                     <label for="expiredCheckBox">
                         <input id="expiredCheckBox" type="checkbox" class="checkbox" name=""> Remind me when expired
-                    </label><br>
-                    <label for="expiredTime">Time:
-                        <input id="expiredTime" class="time" type="time">
                     </label><br>
                     <label for="textarea">Description:</label>
                     <textarea id="textarea" class="textarea"></textarea><br>
@@ -102,8 +101,8 @@
                         </select>
                     </label>
                     <div class="btnEventStyle">
-                        <button type="reset" class="btnCancel" id="btnCancel">CANCEL</button>
-                        <button type="submit" class="btnCreate" id="btnCreate">CREATE</button>
+                        <button type="reset" class="btnEvent" id="btnCancel">CANCEL</button>
+                        <button type="submit" class="btnEvent" id="btnCreate">CREATE</button>
                     </div>
                 </fieldset>
             </form>

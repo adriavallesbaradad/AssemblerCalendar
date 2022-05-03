@@ -172,6 +172,16 @@ function getEventInfo() {
         })
 }
 
+const btnCheckEndDate = document.querySelector("#endDateCheckBox");
+btnCheckEndDate.addEventListener("change", function(){
+    if (this.checked){
+        document.getElementById("titleEndDate").textContent = "End Date: ";
+        document.getElementById("endDate").style.display = "block";
+    } else {
+        document.getElementById("endDate").style.display = "none";
+        document.getElementById("titleEndDate").textContent = "";
+    }
+})
 const divBtn = document.querySelectorAll(".divBtn");
 const  btnCreate = document.querySelectorAll(".eventOnDay");
 
