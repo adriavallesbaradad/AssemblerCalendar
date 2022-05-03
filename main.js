@@ -163,14 +163,17 @@ function getCalendarBtnInfo() {
     //get end date pre-filled ?
 }
 
+let log;
 function getEventInfo() {
     document.querySelector('#modalContent')
         .addEventListener('submit', e => {
             e.preventDefault()
             const data = Object.fromEntries(new FormData(e.target))
+            log = data;
             console.log(data);
         })
 }
+console.log(log);
 
 const btnCheckEndDate = document.querySelector("#endDateCheckBox");
 btnCheckEndDate.addEventListener("change", function(){
