@@ -32,8 +32,10 @@ let newEvent = document.querySelector(".eventOnDay");
 
 //CALENDAR SECTION NUMBERS
 // document.querySelector(".days").addEventListener("click", showModalday);
-// document.querySelector(".btnCreate").addEventListener("click", createEvent);
 // document.querySelector(".eventOnDay").addEventListener("click", eventList);
+
+//EVENT TAB
+document.querySelector("#btnCreateEvent").addEventListener("click", createEvent);
 
 //SHOW CALENDAR
 function renderCalendar() {
@@ -163,17 +165,18 @@ function getCalendarBtnInfo() {
     //get end date pre-filled ?
 }
 
-let log;
 function getEventInfo() {
-    document.querySelector('#modalContent')
-        .addEventListener('submit', e => {
+    document.querySelector('#modalContent').addEventListener('submit', e => {
             e.preventDefault()
             const data = Object.fromEntries(new FormData(e.target))
-            log = data;
             console.log(data);
+            console.log("title",data.title);
+            console.log("initial date",data.initialDate);
+            console.log("end date",data.endDate);
+            console.log(document.querySelector("#textarea").value);
         })
 }
-console.log(log);
+
 
 const btnCheckEndDate = document.querySelector("#endDateCheckBox");
 btnCheckEndDate.addEventListener("change", function(){
@@ -185,6 +188,9 @@ btnCheckEndDate.addEventListener("change", function(){
         document.getElementById("titleEndDate").textContent = "";
     }
 })
+
+
+//CALENDAR NUMBER BUTTONS
 const divBtn = document.querySelectorAll(".divBtn");
 const  btnCreate = document.querySelectorAll(".eventOnDay");
 
