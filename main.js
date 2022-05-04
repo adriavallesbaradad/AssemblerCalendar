@@ -5,13 +5,15 @@ let day = date.getDate();
 let month = date.getMonth();
 let year = date.getFullYear();
 
+let localDate;
+
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 let eventObj = {
     title: "",
-    initialDate: "",
-    endDate: "",
+    initialDate: date,
+    endDate: date,
     expireDate: "",
     description: "",
     eventType: ""
@@ -129,17 +131,17 @@ function showModalbtn() {
 function showModalday(e) {
     modal.style.display = "block";
 
-    console.log(e.target.dataset.date);
-    let localDate = new Date(e.target.dataset.date);
-    localDate.setHours(new Date().getHours());
-    localDate.setMinutes(new Date().getMinutes());
-    console.log(localDate);
-    document.getElementById("initialDate").value = localDate.toISOString().slice(0, 16);
+    localDate = new Date(e.target.dataset.date);
+    inputDate = localDate;
+    inputDate.setHours(new Date().getHours());
+    inputDate.setMinutes(new Date().getMinutes());
+    document.getElementById("initialDate").value = inputDate.toISOString().slice(0, 16);
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
+    document.getElementById("modalContent").reset();
 }
 // btnCancel.onclick = function (){
 //     modal.style.display = "none";
@@ -149,15 +151,13 @@ span.onclick = function () {
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        document.getElementById("modalContent").reset();
     }
 }
 
 function createEvent() {
-    if (newEventbtn) {
-        getEventInfo();
-    } else {
-        getEventInfo();
-    }
+    getEventInfo();
+    modal.style.display = "none";
 }
 
 function getCalendarBtnInfo() {
@@ -165,23 +165,34 @@ function getCalendarBtnInfo() {
     //get end date pre-filled ?
 }
 
+
 function getEventInfo() {
+    // let event = eventObj;
+
+    localDate = new Date(localDate.getFullYear(), localDate.getMonth(), localDate.getDate());
+
     document.querySelector('#modalContent').addEventListener('submit', e => {
         e.preventDefault()
         const data = Object.fromEntries(new FormData(e.target))
-        let event = eventObj;
-        console.log(data);
-        console.log("title", data.title);
-        event.title = data.title;
-        console.log("initial date", data.initialDate);
-        event.initialDate = data.initialDate;
-        console.log("end date", data.endDate);
-        event.endDate = data.endDate;
-        console.log(document.querySelector("#textarea").value);
-        event.description = document.querySelector("#textarea").value;
-        console.log(document.querySelector("#eventType").value);
-        event.eventType = document.querySelector("#eventType").value;
+        eventObj.title = data.title;
+        console.log("title", eventObj.title);
+        eventObj.initialDate = data.initialDate;
+        eventObj.endDate = data.endDate;
+        eventObj.description = document.querySelector("#textarea").value;
+        eventObj.eventType = document.querySelector("#eventType").value;
     })
+
+    console.log("local storage is: ",JSON.parse(localStorage.getItem(localDate)));
+    console.log("event title is: ",eventObj.title);
+    console.log("fucking event is :",JSON.stringify(eventObj));
+
+    if (localStorage.getItem(localDate) == null) {
+        localStorage.setItem(localDate, JSON.stringify(eventObj));
+    } else {
+        let eventArray = JSON.parse(localStorage.getItem(localDate))
+        eventArray.push(eventObj);
+        localStorage.setItem(localDate, JSON.stringify(eventArray));
+    }
 }
 
 const btnCheckEndDate = document.querySelector("#endDateCheckBox");
@@ -196,7 +207,6 @@ btnCheckEndDate.addEventListener("change", function () {
 })
 
 //CALENDAR NUMBER BUTTONS
-
 function calendarNumberButtons() {
     const divBtn = document.querySelectorAll(".divBtn");
     const btnCreate = document.querySelectorAll(".eventOnDay");
