@@ -3,10 +3,7 @@ const date = new Date();
 let weekday = date.getDay();
 let day = date.getDate();
 let month = date.getMonth();
-
-
-//MODAL WAS OPENED WHERE?
-let newEventbtn = true;
+let year = date.getFullYear();
 
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -16,7 +13,7 @@ let eventObj = {
     initialDate: "",
     endDate: "",
     expireDate: "",
-    Description: "",
+    description: "",
     eventType: ""
 }
 
@@ -28,9 +25,8 @@ document.querySelector(".btnNewEvent").addEventListener("click", showModalbtn);
 document.querySelector(".titleWeekdaySection").innerHTML = weekdays[weekday];
 document.querySelector(".titleMonthEventSection").innerHTML = months[month] + " " + day;
 
-let newEvent = document.querySelector(".eventOnDay");
-
 //CALENDAR SECTION NUMBERS
+let newEvent = document.querySelector(".eventOnDay");
 // document.querySelector(".days").addEventListener("click", showModalday);
 // document.querySelector(".eventOnDay").addEventListener("click", eventList);
 
@@ -43,12 +39,14 @@ function renderCalendar() {
     weekday = date.getDay();
     day = date.getDate();
     month = date.getMonth();
+    year = date.getFullYear();
+    let divDate;
 
     let monthDays = document.querySelector(".days");
     let days = "";
 
     //CALENDAR SECTION HEADER
-    document.querySelector(".titleYear").innerHTML = date.getFullYear();
+    document.querySelector(".titleYear").innerHTML = year;
     document.querySelector(".titleMonth p").innerHTML = months[month];
 
     // CALENDAR NUMBERS
@@ -62,24 +60,33 @@ function renderCalendar() {
     }
 
     for (let p = getFirstWeekday(); p > 0; p--) {
-        days += `<div class="prev-date divBtn">${lastMonthDays - p}</div>`
+        divDate = `${year}/${month}/${lastMonthDays - p}`;
+        days += `<div data-date="${divDate}" class="prev-date divBtn">${lastMonthDays - p}
+        <button data-date="${divDate}" class="eventOnDay">+</button></div>`;
         monthDays.innerHTML = days;
     }
 
     for (let i = 1; i <= lastDayoftheMonth; i++) {
-        if (i == new Date().getDate() && month == new Date().getMonth()) {
-            days += `<div class="today divBtn">${i}<button class="eventOnDay">+</button></div>`;
+        divDate = `${year}/${month + 1}/${i}`;
+        if (i == new Date().getDate() && (month == new Date().getMonth() && year == new Date().getFullYear())) {
+
+            days += `<div data-date="${divDate}" class="today divBtn">${i}
+            <button data-date="${divDate}" class="eventOnDay">+</button></div>`;
         } else {
-            days += `<div class="divBtn">${i}<button class="eventOnDay">+</button></div>`
+            days += `<div data-date="${divDate}" class="divBtn">${i}
+            <button data-date="${divDate}" class="eventOnDay">+</button></div>`
         }
         monthDays.innerHTML = days;
     }
 
     let nextDays = (6 - lastWeekday);
     for (let n = 1; n <= nextDays; n++) {
-        days += `<div class="next-date divBtn">${n}<button class="eventOnDay">+</button></div>`
+        divDate = `${year}/${month + 2}/${n}`;
+        days += `<div data-date="${divDate}" class="next-date divBtn">${n}<button data-date="${divDate}" class="eventOnDay">+</button></div>`
         monthDays.innerHTML = days;
     }
+
+    calendarNumberButtons();
 }
 
 function rendernextMonth() {
@@ -93,7 +100,7 @@ function renderPreviousMonth() {
 }
 
 renderCalendar();
-
+calendarNumberButtons();
 
 //MODAL SECTION
 
@@ -115,26 +122,21 @@ let span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 function showModalbtn() {
     modal.style.display = "block";
-    newEventbtn = true;
+    document.getElementById("initialDate").value = '';
 }
 
 // When the user clicks on a day, open the modal
-function showModalday() {
+function showModalday(e) {
     modal.style.display = "block";
-    newEventbtn = false;
+
+    console.log(e.target.dataset.date);
+    let localDate = new Date(e.target.dataset.date);
+    localDate.setHours(new Date().getHours());
+    localDate.setMinutes(new Date().getMinutes());
+    console.log(localDate);
+    document.getElementById("initialDate").value = localDate.toISOString().slice(0, 16);
 }
 
-// When the user clicks on the button, open the modal
-function showModalDay(e) {
-    console.log(this);
-    console.log(e.target);
-    console.log(this.button);
-    if (e.target == newEvent) {
-        eventList();
-    } else {
-        modal.style.display = "block";
-    }
-}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
@@ -158,8 +160,6 @@ function createEvent() {
     }
 }
 
-function getNewBtnInfo() {}
-
 function getCalendarBtnInfo() {
     //get inital date should be pre-filled
     //get end date pre-filled ?
@@ -167,20 +167,26 @@ function getCalendarBtnInfo() {
 
 function getEventInfo() {
     document.querySelector('#modalContent').addEventListener('submit', e => {
-            e.preventDefault()
-            const data = Object.fromEntries(new FormData(e.target))
-            console.log(data);
-            console.log("title",data.title);
-            console.log("initial date",data.initialDate);
-            console.log("end date",data.endDate);
-            console.log(document.querySelector("#textarea").value);
-        })
+        e.preventDefault()
+        const data = Object.fromEntries(new FormData(e.target))
+        let event = eventObj;
+        console.log(data);
+        console.log("title", data.title);
+        event.title = data.title;
+        console.log("initial date", data.initialDate);
+        event.initialDate = data.initialDate;
+        console.log("end date", data.endDate);
+        event.endDate = data.endDate;
+        console.log(document.querySelector("#textarea").value);
+        event.description = document.querySelector("#textarea").value;
+        console.log(document.querySelector("#eventType").value);
+        event.eventType = document.querySelector("#eventType").value;
+    })
 }
 
-
 const btnCheckEndDate = document.querySelector("#endDateCheckBox");
-btnCheckEndDate.addEventListener("change", function(){
-    if (this.checked){
+btnCheckEndDate.addEventListener("change", function () {
+    if (this.checked) {
         document.getElementById("titleEndDate").textContent = "End Date: ";
         document.getElementById("endDate").style.display = "block";
     } else {
@@ -189,24 +195,26 @@ btnCheckEndDate.addEventListener("change", function(){
     }
 })
 
-
 //CALENDAR NUMBER BUTTONS
-const divBtn = document.querySelectorAll(".divBtn");
-const  btnCreate = document.querySelectorAll(".eventOnDay");
 
-for (const elementDivBtn of divBtn) {
-    elementDivBtn.addEventListener("click" ,showInfo);
-}
+function calendarNumberButtons() {
+    const divBtn = document.querySelectorAll(".divBtn");
+    const btnCreate = document.querySelectorAll(".eventOnDay");
 
-for (const elementBtnCreate of btnCreate) {
-    elementBtnCreate.addEventListener("click" , showCreateModal);
-}
+    for (const elementDivBtn of divBtn) {
+        elementDivBtn.addEventListener("click", showInfo);
+    }
 
-function showInfo(e) {
-    console.log("info");
-}
+    for (const elementBtnCreate of btnCreate) {
+        elementBtnCreate.addEventListener("click", showCreateModal);
+    }
 
-function showCreateModal(e) {
-    e.stopPropagation();
-    showModalday();
+    function showInfo() {
+        console.log("info");
+    }
+
+    function showCreateModal(e) {
+        e.stopPropagation();
+        showModalday(e);
+    }
 }
