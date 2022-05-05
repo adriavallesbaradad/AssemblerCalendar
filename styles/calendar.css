@@ -188,6 +188,7 @@ body {
     text-align: center;
     background-position: center;
     justify-self: center;
+
 }
 
 
@@ -198,6 +199,9 @@ body {
 
 .days div:hover .eventOnDay {
     display: block;
+    position: relative;
+    ;
+    
 }
 .eventOnDay {
     display: none;
@@ -212,6 +216,7 @@ body {
     border-radius: 50%;
     transition: all 0.5s ease-in-out;
     cursor: pointer;
+    
 }
 
 .eventOnDay:hover {
