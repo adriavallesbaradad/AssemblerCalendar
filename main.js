@@ -4,8 +4,8 @@ let weekday = date.getDay();
 let day = date.getDate();
 let month = date.getMonth();
 let year = date.getFullYear();
-
 let globalDivDate;
+let eventTabList = [];
 
 const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -32,7 +32,7 @@ let newEvent = document.querySelector(".eventOnDay");
 
 //EVENT TAB
 let eventsTab = document.querySelector(".eventDateSection");
-eventsTab.addEventListener("click", getEvent)
+eventsTab.addEventListener("click", getEvent);
 
 //SHOW CALENDAR
 function renderCalendar() {
@@ -137,6 +137,7 @@ function showModalDay(e) {
 span.onclick = function () {
   modal.style.display = "none";
   document.getElementById("modalContent").reset();
+  resetCheckBoxes();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -144,8 +145,51 @@ window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
     document.getElementById("modalContent").reset();
+    resetCheckBoxes();
   }
 }
+
+function resetCheckBoxes() {
+  document.getElementById("endDate").style.display = "none";
+  document.getElementById("remind_select").style.display = "none";
+}
+
+// EVENT VALIDATION
+const modalForm = document.getElementById("modalContent");
+const inputs = document.querySelectorAll('#modalContent input');
+
+// modalForm.addEventListener("sumbit", validarEvent());
+const expresion = {
+  title: /^.{4,60}$/
+}
+
+const titleEvent = document.getElementById('title');
+console.log(titleEvent);
+
+const validarEvent = (e) => {
+  switch (e.target.name) {
+    case "title":
+      if (expresion.title.test(e.target.value)) {
+        titleEvent.classList.add("input__valid");
+        titleEvent.classList.remove("input__incorrect");
+      } else {
+        titleEvent.classList.add("input__incorrect");
+        titleEvent.classList.remove("input__valid");
+      }
+      break;
+  }
+}
+
+inputs.forEach((inputs) => {
+  inputs.addEventListener('keyup', validarEvent);
+  inputs.addEventListener('blur', validarEvent);
+})
+
+
+
+
+
+
 
 //IF MODAL IS CALLED BY A CALENDAR BUTTON THE INITIAL DATE IS UPDATED
 function updateInitialDate(e) {
@@ -162,6 +206,7 @@ function getEventInfo() {
 
   //LISTENING TO THE BUTTON SUBMIT IN MODAL
   document.getElementById('modalContent').addEventListener('submit', e => {
+    // e.preventDefault();
     data = Object.fromEntries(new FormData(e.target))
     saveToLocalStorage(data);
   })
@@ -173,6 +218,7 @@ function saveToLocalStorage(data) {
 
   data.description = document.getElementById("textarea").value;
   data.eventType = document.getElementById("eventType").value;
+  data.expireDate = document.getElementById("expiredCheckBox").value;
 
   if (localStorage.getItem(globalDivDate) == null) {
     localStorage.setItem(globalDivDate, JSON.stringify([data]));
@@ -185,17 +231,39 @@ function saveToLocalStorage(data) {
 }
 
 //GET EVENTS IN LOCAL STORAGE
-function getEvent() {
+function getEvent(e) {
+  eventTabList.forEach(element => {
+    if (e.target.innerHTML == element.title) {
+      // document.getElementById("title").innerHTML = element.title;
+      // document.getElementById("title").innerHTML = element.title;
+      // document.getElementById("title").innerHTML = element.title;
+      // document.getElementById("title").innerHTML = element.title;
+      // document.getElementById("title").innerHTML = element.title;
+      console.log("Element Object:", element);
+      console.log("Title:", element.title);
+      console.log("Initial Date:", element.initialDate);
+      console.log("End Date:", element.endDate);
+      console.log("Description:", element.description);
+      console.log("Event Type:", element.eventType);
+    }
+  });
 }
 
 const btnCheckEndDate = document.querySelector("#endDateCheckBox");
 btnCheckEndDate.addEventListener("change", function () {
   if (this.checked) {
-    document.getElementById("titleEndDate").textContent = "End Date: ";
     document.getElementById("endDate").style.display = "block";
   } else {
     document.getElementById("endDate").style.display = "none";
-    document.getElementById("titleEndDate").textContent = "";
+  }
+})
+
+const btnCheckRemind = document.querySelector("#expiredCheckBox");
+btnCheckRemind.addEventListener("change", function () {
+  if (this.checked) {
+    document.getElementById("remind_select").style.display = "block";
+  } else {
+    document.getElementById("remind_select").style.display = "none";
   }
 })
 
@@ -223,11 +291,13 @@ function calendarNumberButtons() {
       eventsTab.appendChild(div);
     } else {
       eventList.forEach(element => {
+        eventTabList.push(element);
         div = document.createElement("div");
         div.innerHTML = element.title;
         eventsTab.appendChild(div);
       });
     }
+    console.log(eventTabList);
   }
 
   function showCreateModal(e) {
