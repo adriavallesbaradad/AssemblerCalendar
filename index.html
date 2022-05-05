@@ -10,105 +10,117 @@
     <title>Calendar</title>
 </head>
 
-<body>
+<!-- EVENT SECTION -->
+<section class="eventSection">
+    <div class="titleEventSection">
+        <div class="titleWeekdaySection"></div>
+        <div class="titleMonthEventSection"></div>
+    </div>
+    <div class="eventDateSection" id="eventDateSection">
+    </div>
+</section>
 
-    <!-- EVENT SECTION -->
-    <section class="eventSection">
-        <div class="titleEventSection">
-            <div class="titleWeekdaySection"></div>
-            <div class="titleMonthEventSection"></div>
-        </div>
-        <div class="eventDateSection" id="eventDateSection">
-        </div>
-    </section>
+<!-- CALENDAR SECTION -->
+<section class="calendarSection">
+    <div class="titleDateEventSection">
+        <div class="btnBackMonth" role="button"></div>
+        <div class="btnNextMonth" role="button"></div>
 
-    <!-- CALENDAR SECTION -->
-    <section class="calendarSection">
-        <div class="titleDateEventSection">
-            <div class="btnBackMonth" role="button"></div>
-            <div class="btnNextMonth" role="button"></div>
-
-            <div class="titleMonth">
-                <p>APRIL</p>
-            </div>
-        </div>
-        <div class="calendarHeader">
-            <div class="titleYear">2022</div>
-            <div class="buttonNewEvent"><button id="btnNewEvent" class="btnNewEvent">NEW EVENT</button></div>
-        </div>
-        <div class="calendar">
-            <div class="weekdays">
-                <div>SUN</div>
-                <div>MON</div>
-                <div>TUE</div>
-                <div>WED</div>
-                <div>THU</div>
-                <div>FRI</div>
-                <div>SAT</div>
-            </div>
-            <!-- CALENDAR DAYS -->
-            <div class="days">
-                <div divDate class="prev-date dayBtn"></div>
-                <div divDate class="dayBtn"><button class="eventOnDay">+</button></div>
-                <div divDate class="next-date dayBtn"></div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- MODAL SECTION -->
-    <div id="eventModal" class="eventModal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="close__container__style">
-                <span class="close">&times;</span>
-            </div>
-            <h1>NEW EVENT</h1>
-            <form class="modal__content__form" id="modalContent">
-                <fieldset>
-                    <label for="title">Title:
-                        <input id="title" class="Title" type="text" name="title">
-                    </label><br>
-                    <label for="initialDate">Initial date:
-                        <input id="initialDate" class="initial_date" type="datetime-local" name="initialDate">
-                    </label><br>
-                    <label for="endDateCheckBox">
-                        <input id="endDateCheckBox" type="checkbox" class="checkbox" name="endDateCheckBox">End date
-                    </label><br>
-                    <label for="endDate">
-                        <div id="titleEndDate"></div>
-                        <input id="endDate" class="end_date" type="datetime-local" name="endDate">
-                    </label><br>
-                    <label for="expiredCheckBox">
-                        <input id="expiredCheckBox" type="checkbox" class="checkbox" name=""> Remind me when expired
-                    </label>
-                    <select id="remind_select" name="remindTime">
-                        <option>5 Mintunes</option>
-                        <option>10 Minutes</option>
-                        <option>15 Minutes</option>
-                        <option>30 Minutes</option>
-                        <option>1 Hour</option>
-                    </select><br>
-                    <label for="textarea">Description:</label>
-                    <textarea id="textarea" class="textarea"></textarea><br>
-                    <label>Event type:
-                        <select class="event_type" id="eventType">
-                            <option>Meeting</option>
-                            <option>Birthday</option>
-                            <option>Appointment</option>
-                            <option>Others</option>
-                        </select>
-                    </label>
-                    <div class="btnEventStyle">
-                        <button type="reset" class="btnEvent" id="btnCancel">CANCEL</button>
-                        <button type="submit" class="btnEvent" id="btnCreateEvent">CREATE</button>
-                    </div>
-                </fieldset>
-            </form>
-            </section>
+        <div class="titleMonth">
+            <p>APRIL</p>
         </div>
     </div>
+    <div class="calendarHeader">
+        <div class="titleYear">2022</div>
+        <div class="buttonNewEvent"><button id="btnNewEvent" class="btnNewEvent">NEW EVENT</button></div>
+    </div>
+    <div class="calendar">
+        <div class="weekdays">
+            <div>SUN</div>
+            <div>MON</div>
+            <div>TUE</div>
+            <div>WED</div>
+            <div>THU</div>
+            <div>FRI</div>
+            <div>SAT</div>
+        </div>
+        <!-- CALENDAR DAYS -->
+        <div class="days">
+            <div data-date class="prev-date dayBtn"><p></p></div>
+            <div data-date class="dayBtn"><button class="eventOnDay">+</button><p></p></div>
+            <div data-date class="next-date dayBtn"><p></p></div>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL SECTION -->
+<div id="eventModal" class="eventModal ModalBasic">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="close__container__style">
+            <span class="close">&times;</span>
+        </div>
+        <h1>NEW EVENT</h1>
+        <form class="modal__content__form" id="modalContent">
+            <fieldset>
+                <label for="title">Title:
+                    <input id="title" class="Title" type="text" name="title">
+                </label><br>
+                <label for="initialDate">Initial date:
+                    <input id="initialDate" class="initial_date" type="datetime-local" name="initialDate">
+                </label><br>
+                <label for="endDateCheckBox">
+                    <input id="endDateCheckBox" type="checkbox" class="checkbox" name="endDateCheckBox">End date
+                </label><br>
+                <label for="endDate">
+                    <div id="titleEndDate"></div>
+                    <input id="endDate" class="end_date" type="datetime-local" name="endDate">
+                </label><br>
+                <label for="expiredCheckBox">
+                    <input id="expiredCheckBox" type="checkbox" class="checkbox" name=""> Remind me when expired
+                </label>
+                <select id="remind_select" name="remindTime">
+                    <option>5 Mintunes</option>
+                    <option>10 Minutes</option>
+                    <option>15 Minutes</option>
+                    <option>30 Minutes</option>
+                    <option>1 Hour</option>
+                </select><br>
+                <label for="textarea">Description:</label>
+                <textarea id="textarea" class="textarea"></textarea><br>
+                <label>Event type:
+                    <select class="event_type" id="eventType">
+                        <option>Meeting</option>
+                        <option>Birthday</option>
+                        <option>Appointment</option>
+                        <option>Others</option>
+                    </select>
+                </label>
+                <div class="btnEventStyle">
+                    <button type="reset" class="btnEvent" id="btnCancel">CANCEL</button>
+                    <button type="submit" class="btnEvent" id="btnCreateEvent">CREATE</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL TAB SECTION -->
+<div id="eventTabModal" class="eventTabModal ModalBasic">
+    <!-- Modal tab content -->
+    <div class="modal-tab-content">
+        <div class="close__container__style">
+            <span class="closeTab">&times;</span>
+        </div>
+        <H2>DAY INFORMATION</H2>
+        <div class="tilet_event" id="tittleEvent">content</div>
+        <div class="IdateEvent" id="IdateEvent">content</div>
+        <div class="eDateEvent" id="eDateEvent">content</div>
+        <div class="descriptionE" id="descriptionE">content</div>
+        <div class="eventType" id="ieventType">content</div>
+    </div>
+</div>
+
 </body>
 
 </html>
