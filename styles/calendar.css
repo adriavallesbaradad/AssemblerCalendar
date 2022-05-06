@@ -36,8 +36,7 @@ body {
 .titleYear {
     display: flex;
     justify-content: right;
-    font-size: 7vw;
-    ;
+    font-size: 3vw;
     color: #f28b77;
     margin-right: 1rem;
     padding-bottom: 1rem;
@@ -156,7 +155,7 @@ body {
     border-radius: 50%;
 }
 
-.divBtn p{
+.divBtn p {
     color: #000000 !important;
 }
 
@@ -185,26 +184,28 @@ body {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
-    /* color: #f28b77; */
+    color: #f28b77;
     background-color: #fddcd5;
     border-radius: 50%;
     transition: all 0.5s ease-in-out;
     text-align: center;
     background-position: center;
     justify-self: center;
+    position: relative;
+    flex-direction: row-reverse;
 }
 
 
 .days div:hover {
     background-color: #fbb0a1;
-    color: #fddcd5 ;
+    color: #fddcd5;
 }
 
 .days div:hover .eventOnDay {
     display: block;
-    position: relative;
-    ;
-
+    position: absolute;
+    top: 75%;
+    left: 40%;
 }
 
 .eventOnDay {
@@ -230,7 +231,6 @@ body {
 
 .weekdays {
     display: grid;
-    width: vw;
     height: 15vh;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -249,5 +249,4 @@ body {
     justify-content: space-around;
     align-items: center;
     justify-self: center;
-
 }

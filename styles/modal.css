@@ -146,6 +146,7 @@ input:focus{
 #endDate{
     display:none;
 }
+
 #remind_select{
     display: none;
     height: 2rem;

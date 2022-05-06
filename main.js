@@ -35,6 +35,17 @@ let eventsTab = document.querySelector(".eventDateSection");
 eventsTab.addEventListener("click", showModalTan);
 
 //SHOW CALENDAR
+
+function rendernextMonth() {
+  date.setMonth(date.getMonth() + 1);
+  renderCalendar();
+}
+
+function renderPreviousMonth() {
+  date.setMonth(date.getMonth() - 1);
+  renderCalendar();
+}
+
 function renderCalendar() {
 
   weekday = date.getDay();
@@ -64,8 +75,8 @@ function renderCalendar() {
     divDate = `${year}/${month}/${lastMonthDays - p}`;
     days += `<div data-date="${divDate}" class="prev-date divBtn">${lastMonthDays - p}
         <button data-date="${divDate}" class="eventOnDay">+</button></div>`;
-    monthDays.innerHTML = days;
 
+    monthDays.innerHTML = days;
     checkEvents(divDate);
   }
 
@@ -80,41 +91,28 @@ function renderCalendar() {
             <button data-date="${divDate}" class="eventOnDay">+</button></div>`
     }
     monthDays.innerHTML = days;
+    checkEvents(divDate);
   }
 
   let nextDays = (6 - lastWeekday);
   for (let n = 1; n <= nextDays; n++) {
     divDate = `${year}/${month + 2}/${n}`;
     days += `<div data-date="${divDate}" class="next-date divBtn">${n}<button data-date="${divDate}" class="eventOnDay">+</button></div>`
-    monthDays.innerHTML = days;
 
+    monthDays.innerHTML = days;
     checkEvents(divDate);
   }
 
   calendarNumberButtons();
 }
 
-function rendernextMonth() {
-  date.setMonth(date.getMonth() + 1);
-  renderCalendar();
-}
-
-function renderPreviousMonth() {
-  date.setMonth(date.getMonth() - 1);
-  renderCalendar();
-}
-
 renderCalendar();
-// calendarNumberButtons();
 
 //CHECK IF THERE ARE EVENTS
 function checkEvents(divDate) {
   if (localStorage.getItem(divDate)) {
     console.log(document.querySelector(`[data-date ="${divDate}"]`));
-    document.querySelector(`[data-date ="${divDate}"]`).innerHTML += "<p>AASDASDASDASDASDASDASDASDASDASDASDASDASD</p>";
-    // document.querySelector(`[data-date ="${divDate}"]`).style.color = "black";
-    // document.querySelector(`[data-date ="${divDate}"]`).style.backgroundColor = "red";
-    // console.log(document.querySelector(`[data-date ="${divDate}"]`));
+    document.querySelector(`[data-date ="${divDate}"]`).innerHTML += "<p>.</p>";
   }
 }
 
