@@ -80,8 +80,6 @@ function renderCalendar() {
             <button data-date="${divDate}" class="eventOnDay">+</button></div>`
     }
     monthDays.innerHTML = days;
-
-    checkEvents(divDate);
   }
 
   let nextDays = (6 - lastWeekday);
@@ -113,10 +111,10 @@ renderCalendar();
 function checkEvents(divDate) {
   if (localStorage.getItem(divDate)) {
     console.log(document.querySelector(`[data-date ="${divDate}"]`));
-    // document.querySelector(`[data-date ="${divDate}"]`).innerHTML += "<p>.</p>";
-    // document.querySelector(`[data-date ="${divDate}"]`).style.color = "red";
-    console.log(document.querySelector(`[data-date ="${divDate}"]`));
-    // .classList.add("<p>.</p>");
+    document.querySelector(`[data-date ="${divDate}"]`).innerHTML += "<p>AASDASDASDASDASDASDASDASDASDASDASDASDASD</p>";
+    // document.querySelector(`[data-date ="${divDate}"]`).style.color = "black";
+    // document.querySelector(`[data-date ="${divDate}"]`).style.backgroundColor = "red";
+    // console.log(document.querySelector(`[data-date ="${divDate}"]`));
   }
 }
 
